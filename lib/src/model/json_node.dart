@@ -33,27 +33,32 @@ class JsonNode {
   }
 
   String get describeValue {
+    
     if (value is! List) {
       return value is String ? '"$value"' : value.toString();
-    } else {
-      List children = value;
-      if (type == ValueType.array) {
-        if (children.isEmpty) {
-          return "Array[0]";
-        } else {
-          dynamic child = children[0];
-          String type = child is JsonNode
-              ? child.type == ValueType.object
-                  ? "Object"
-                  : child.type.name
-              : child.runtimeType.toString();
-          return "Array<$type>[${children.length}]";
-        }
-      } else if (type == ValueType.object) {
-        return "Object";
-      } else {
-        return type.name;
-      }
+    } 
+    else {
+      return "";
+      // List children = value;
+      // if (type == ValueType.array) {
+      //   if (children.isEmpty) {
+      //     return "Array[0]";
+      //   } else {
+      //     dynamic child = children[0];
+      //     String type = child is JsonNode
+      //         ? child.type == ValueType.object
+      //             ? ""
+      //             : child.type.name
+      //         : child.runtimeType.toString();
+      //     return "Array<$type>[${children.length}]";
+      //   }
+      // } 
+      // else if (type == ValueType.object) {
+      //   return "";
+      // } 
+      // else {
+      //   return type.name;
+      // }
     }
   }
 
